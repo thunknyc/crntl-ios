@@ -345,13 +345,3 @@ public func parse(string s: String) -> [Value] {
     FileManager.default.createFile(atPath: tmpUrl.path, contents: d, attributes: [:])
     return parse(at_path: tmpUrl.path)
 }
-
-public func test_parse() {
-    // Output: "Value: DictionaryValue<[DictionaryEntryValue<KeywordValue<answer>,IntValue<42>>]>"
-
-    let values = parse(string: "{:answer 42}")
-    for v in values {
-        print("Value: \(v)")
-    }
-}
-
