@@ -343,5 +343,6 @@ public func parse(string s: String) -> [Value] {
         tmpUrl = URL(string: "\(uuid.uuidString).crntl", relativeTo: tmpDir)!
     } while FileManager.default.fileExists(atPath: tmpUrl.path)
     FileManager.default.createFile(atPath: tmpUrl.path, contents: d, attributes: [:])
+    defer { FileManager.default.removeItem(atPath: tmpUrl.path) }
     return parse(at_path: tmpUrl.path)
 }
