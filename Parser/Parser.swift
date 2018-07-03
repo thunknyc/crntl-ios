@@ -36,7 +36,7 @@ public class PrimitiveValue : Value {
         return "\(type(of: self))<\(content)>"
     }
 
-    var content: String
+    public var content: String
 
     public init(_ value: ParserValue) {
         let d = Data(bytes: value.content.token.wcs,
@@ -51,7 +51,7 @@ public class BoxedValue : Value {
         return "\(type(of: self))<\(content)>"
     }
 
-    var content: Value
+    public var content: Value
 
     public init(_ value: ParserValue) {
         self.content = object(for_value: value.content.boxed_value.pointee)
@@ -141,7 +141,7 @@ public class SequenceValue : Value {
         return "\(type(of: self))<\(contents)>"
     }
 
-    var contents: [Value]
+    public var contents: [Value]
 
     public init(_ value: ParserValue) {
         self.contents = []
@@ -183,8 +183,8 @@ public class DictionaryEntryValue : Value {
     public override var debugDescription: String {
         return "\(type(of: self))<\(key),\(value)>"
     }
-    let key: Value;
-    let value: Value;
+    public let key: Value;
+    public let value: Value;
 
     public init(_ key: Value, _ value: Value) {
         self.key = key
@@ -209,8 +209,9 @@ public class TaggedValue : Value {
     public override var debugDescription: String {
         return "\(type(of: self))<\(tag),\(content)>"
     }
-    let tag: SymbolValue
-    let content: Value
+    
+    public let tag: SymbolValue
+    public let content: Value
 
     public init(_ value: ParserValue) {
         self.tag = object(for_value: value.content.tagged.tag.pointee) as! SymbolValue
@@ -343,6 +344,6 @@ public func parse(string s: String) -> [Value] {
         tmpUrl = URL(string: "\(uuid.uuidString).crntl", relativeTo: tmpDir)!
     } while FileManager.default.fileExists(atPath: tmpUrl.path)
     FileManager.default.createFile(atPath: tmpUrl.path, contents: d, attributes: [:])
-    defer { FileManager.default.removeItem(atPath: tmpUrl.path) }
+    defer { _ = try? FileManager.default.removeItem(atPath: tmpUrl.path) }
     return parse(at_path: tmpUrl.path)
 }
