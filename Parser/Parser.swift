@@ -234,7 +234,10 @@ public class RawValue : Value {
 public func object(for_value value: ParserValue) -> Value {
     switch value.type {
     case ERROR_VALUE:
-        return ErrorValue("Error encountered while parsing")
+        let tokenizerState = value.state
+        let line = tokenizerState.line
+        let column = tokenizerState.column
+        return ErrorValue("Error encountered while parsing at line \(line), column \(column)")
     case END_VALUE:
         return EndValue()
 
