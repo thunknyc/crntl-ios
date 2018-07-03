@@ -1,4 +1,4 @@
 module Crntl [system] {
-header "../Parser/crntl.h"
+header "./crntl/crntl.h"
 export *
 }

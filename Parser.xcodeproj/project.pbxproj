@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C35F55E20EBD1FA00D5CD64 /* crntl.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C35F55C20EBD1FA00D5CD64 /* crntl.h */; };
+		3C35F55F20EBD1FA00D5CD64 /* crntl.c in Sources */ = {isa = PBXBuildFile; fileRef = 3C35F55D20EBD1FA00D5CD64 /* crntl.c */; };
 		3CFBE6C020E92F2D00EBDE97 /* Parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CFBE6BE20E92F2D00EBDE97 /* Parser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3CFBE6C720E92F7600EBDE97 /* Crntl in Resources */ = {isa = PBXBuildFile; fileRef = 3CFBE6C620E92F7600EBDE97 /* Crntl */; };
 		3CFBE6C920E92FAB00EBDE97 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFBE6C820E92FAB00EBDE97 /* Parser.swift */; };
-		3CFBE6CC20E92FCF00EBDE97 /* crntl.c in Sources */ = {isa = PBXBuildFile; fileRef = 3CFBE6CA20E92FCF00EBDE97 /* crntl.c */; };
-		3CFBE6CD20E92FCF00EBDE97 /* crntl.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CFBE6CB20E92FCF00EBDE97 /* crntl.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C35F55C20EBD1FA00D5CD64 /* crntl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crntl.h; path = Crntl/crntl/crntl.h; sourceTree = SOURCE_ROOT; };
+		3C35F55D20EBD1FA00D5CD64 /* crntl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = crntl.c; path = Crntl/crntl/crntl.c; sourceTree = SOURCE_ROOT; };
 		3CFBE6BB20E92F2D00EBDE97 /* Parser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Parser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CFBE6BE20E92F2D00EBDE97 /* Parser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		3CFBE6BF20E92F2D00EBDE97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CFBE6C620E92F7600EBDE97 /* Crntl */ = {isa = PBXFileReference; lastKnownFileType = text; path = Crntl; sourceTree = "<group>"; };
 		3CFBE6C820E92FAB00EBDE97 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		3CFBE6CA20E92FCF00EBDE97 /* crntl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crntl.c; sourceTree = "<group>"; };
-		3CFBE6CB20E92FCF00EBDE97 /* crntl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crntl.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +55,8 @@
 		3CFBE6BD20E92F2D00EBDE97 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				3CFBE6CA20E92FCF00EBDE97 /* crntl.c */,
-				3CFBE6CB20E92FCF00EBDE97 /* crntl.h */,
+				3C35F55D20EBD1FA00D5CD64 /* crntl.c */,
+				3C35F55C20EBD1FA00D5CD64 /* crntl.h */,
 				3CFBE6C820E92FAB00EBDE97 /* Parser.swift */,
 				3CFBE6BE20E92F2D00EBDE97 /* Parser.h */,
 				3CFBE6BF20E92F2D00EBDE97 /* Info.plist */,
@@ -71,7 +71,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CFBE6CD20E92FCF00EBDE97 /* crntl.h in Headers */,
+				3C35F55E20EBD1FA00D5CD64 /* crntl.h in Headers */,
 				3CFBE6C020E92F2D00EBDE97 /* Parser.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,7 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CFBE6C920E92FAB00EBDE97 /* Parser.swift in Sources */,
-				3CFBE6CC20E92FCF00EBDE97 /* crntl.c in Sources */,
+				3C35F55F20EBD1FA00D5CD64 /* crntl.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
