@@ -21,14 +21,21 @@ public class EndValue : Value {
 
 public class ErrorValue : Value {
     public override var debugDescription: String {
-        return "\(type(of: self))<\(message)>"
+        if let line = line, let column = column {
+            return "\(type(of: self))<\(line),\(column);\(message)>"
+        } else {
+            return "\(type(of: self))<\(message)>"
+        }
     }
 
-    let message: String;
+    public let message: String;
+    public let line: Int?
+    public let column: Int?
 
-    public init(_ message: String) {
-        self.message = message
+    public init(_ message: String, line: Int? = nil, column: Int? = nil) {
+        self.message = message; self.line = line; self.column = column
     }
+
 }
 
 public class PrimitiveValue : Value {
@@ -237,7 +244,7 @@ public func object(for_value value: ParserValue) -> Value {
         let tokenizerState = value.state
         let line = tokenizerState.line
         let column = tokenizerState.column
-        return ErrorValue("Error encountered while parsing at line \(line), column \(column)")
+        return ErrorValue("Error encountered while parsing", line: Int(line), column: Int(column))
     case END_VALUE:
         return EndValue()
 
