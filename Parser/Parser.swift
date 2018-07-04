@@ -38,6 +38,14 @@ public class ErrorValue : Value {
 
 }
 
+extension String {
+    init(wcs: UnsafeMutablePointer<wchar_t>, count: Int) {
+        let d = Data(bytes: wcs, count: count * MemoryLayout<wchar_t>.size)
+        let s = String(data: d, encoding: .utf32LittleEndian)
+        self = s ?? "FAILEDCONVERTEDSTRING"
+    }
+}
+
 public class PrimitiveValue : Value {
     public override var debugDescription: String {
         return "\(type(of: self))<\(content)>"
@@ -46,10 +54,7 @@ public class PrimitiveValue : Value {
     public var content: String
 
     public init(_ value: ParserValue) {
-        let d = Data(bytes: value.content.token.wcs,
-                     count: (value.content.token.wcs_length-1) * MemoryLayout<wchar_t>.size)
-        let s = String(data: d, encoding: .utf32LittleEndian)
-        self.content = s ?? "PARSEFAILED"
+        self.content = String(wcs: value.content.token.wcs, count: value.content.token.wcs_length-1)
     }
 }
 
@@ -244,7 +249,9 @@ public func object(for_value value: ParserValue) -> Value {
         let tokenizerState = value.state
         let line = tokenizerState.line
         let column = tokenizerState.column
-        return ErrorValue("Error encountered while parsing", line: Int(line), column: Int(column))
+        let wcs = value.content.error.string!
+        let message = String(wcs: wcs, count: wcslen(wcs))
+        return ErrorValue(message, line: Int(line), column: Int(column))
     case END_VALUE:
         return EndValue()
 
